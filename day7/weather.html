@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Weather App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script defer src="./weather.js"></script>
+
+<style>
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.search-con {
+    position: relative;
+}
+.search-con span {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body class="h-screen flex bg-gray-100">
+
+<!-- LEFT SIDE -->
+<div class="w-[70%] relative text-white flex flex-col justify-between p-10
+bg-cover bg-center"
+style="background-image: url('https://tse2.mm.bing.net/th/id/OIP.cr64_ksFoNnd9jetiwlUqwHaDt?rs=1&pid=ImgDetMain&o=7&rm=3');">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-blue-500/50"></div>
+
+    <!-- Content -->
+    <div class="relative z-10">
+
+        <div class="flex justify-between items-center">
+            <h2 class="text-lg font-light tracking-wide">the.weather</h2>
+            <p id="time" class="text-sm"></p>
+        </div>
+
+        <div class="mt-20 flex items-end space-x-6">
+            <div>
+                <p class="text-7xl font-light" id="temp_c">26°</p>
+                <p class="text-sm opacity-80" id="feelslike_c">Feels like 30°</p>
+            </div>
+
+            <div>
+                <div class="text-2xl font-semibold">
+                    <span id="name">Palayamkottai</span>
+                    <span class="text-sm font-light" id="region"> Tamil Nadu, India</span>
+                </div>
+                <p class="mt-2 text-sm opacity-90" id="condition">
+                    Moderate or heavy rain shower
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="w-[30%] bg-slate-600 text-white p-8 flex flex-col justify-between">
+
+    <div>
+        <div class="search-con mb-8">
+            <input placeholder="Search location"
+                   type="search"
+                   id="search"
+                   class="w-full bg-transparent border-b border-gray-300 pb-2 outline-none placeholder-gray-300 text-sm">
+            <span onclick="findWeather()" class="material-symbols-outlined text-gray-300">
+                search
+            </span>
+        </div>
+
+        <h2 class="text-lg font-semibold mb-6">Weather Details</h2>
+
+        <ul class="space-y-4 text-sm">
+            <li class="flex justify-between">
+                Cloudy <span id="cloud">89%</span>
+            </li>
+            <li class="flex justify-between">
+                Humidity <span id="humidity">81%</span>
+            </li>
+            <li class="flex justify-between">
+                Wind <span id="wind_kph">10.1 km/h ENE</span>
+            </li>
+            <li class="flex justify-between">
+                Wind Gusts <span id="gust_kph">20.2 km/h</span>
+            </li>
+            <li class="flex justify-between">
+                Precipitation <span id="precip_mm">2.98 mm</span>
+            </li>
+            <li class="flex justify-between">
+                Pressure <span id="pressure_mb">1012 mb</span>
+            </li>
+            <li class="flex justify-between">
+                Visibility <span id="vis_km">7 km</span>
+            </li>
+            <li class="flex justify-between">
+                UV Radiation <span id="uv">1</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

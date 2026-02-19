@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: background-color 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 14px;
+    width: 600px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.quote {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.source {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.citation {
+    font-style: italic;
+    margin-left: 8px;
+}
+
+.year {
+    margin-left: 8px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #111;
+    color: white;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}

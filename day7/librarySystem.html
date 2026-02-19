@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial
+scale=1.0">
+    <title>Library System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input {
+            background-color: rgba(255, 0, 0, 0.5);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        #add {
+            background-color: rgba(52, 73, 94);
+            ;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        #label {
+            color: olivedrab;
+            font-weight: bold;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Library System</h1>
+    <div>
+        <label for="bookTitle">Title:</label>
+        <input type="text" id="bookTitle" placeholder="Enter 
+book title">
+
+        <label for="bookAuthor">Author:</label>
+        <input type="text" id="bookAuthor" placeholder="Enter 
+author">
+
+        <button id="add" onclick="addBook()">Add Book</button>
+    </div>
+    <ul id="bookList"></ul>
+
+    <script>
+        // Book class
+        class Book {
+            constructor(title, author) {
+                this.title = title;
+                this.author = author;
+            }
+        }
+
+        // Library class
+        class Library {
+            constructor() {
+                this.books = [];
+            }
+
+            addBook(book) {
+                this.books.push(book);
+            }
+
+            renderBooks() {
+                const bookList = document.getElementById('bookList');
+                bookList.innerHTML = '';
+
+                this.books.forEach(book => {
+                    const li = document.createElement('li');
+                    li.textContent = `${book.title} written by ${book.author}`;
+                    bookList.appendChild(li);
+                });
+            }
+        }
+
+        // Global library instance
+        const myLibrary = new Library();
+
+        // Function to add a book
+        function addBook() {
+            const bookTitleInput = document.getElementById('bookTitle');
+            const bookAuthorInput = document.getElementById('bookAuthor');
+
+            const title = bookTitleInput.value.trim();
+            const author = bookAuthorInput.value.trim();
+
+            if (title !== '' && author !== '') {
+                const newBook = new Book(title, author);
+                myLibrary.addBook(newBook);
+                myLibrary.renderBooks();
+
+                bookTitleInput.value = '';
+                bookAuthorInput.value = '';
+            }
+        }
+
+        // Initial rendering
+        myLibrary.renderBooks();
+    </script>
+</body>
+
+</html>

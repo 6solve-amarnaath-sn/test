@@ -1,0 +1,87 @@
+body {
+    font-family: 'Permanent Marker', cursive;
+    background: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.title {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.subtitle {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.app {
+    background: #f2f2f2;
+    padding: 30px 40px;
+    width: 650px;
+    border: 2px solid #333;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: bold;
+    color: navy;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: red;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.hide-btn {
+    border: 2px dashed red;
+    background: transparent;
+    padding: 6px 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.list-container h3 {
+    margin-bottom: 10px;
+}
+
+.description-area,
+.add-item-area {
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 6px;
+    width: 200px;
+}
+
+button {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 12px 0;
+}
+
+li button {
+    margin-left: 8px;
+    border: 2px solid blue;
+    background: transparent;
+    padding: 4px 6px;
+}
+
+li button.remove {
+    border: 2px dashed red;
+}
+
+.add-item-area button {
+    border: 2px dashed green;
+    background: transparent;
+}

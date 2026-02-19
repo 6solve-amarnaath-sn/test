@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+
+    <h1 class="text-4xl bold mb-3">Shopping cart</h1>
+    <div class="mb-3">
+        <input class="border p-2 rounded" type="text" placeholder="Enter item name" id="name">
+        <input class="border p-2 rounded" type="number" placeholder="Enter item price" id="price">
+        <button class="border border-blue-500 p-3 rounded-xl bg-blue-500/50 text-white" onclick="addItem()">Add to cart</button>
+    </div>
+    <ul id="list">
+
+    </ul>
+    <p>Total Price: Rs.<span id="totalPrice">0.00</span></p>
+    <script>
+        const shoppingCart = [];
+
+
+        function addItem() {
+            const newItem = {
+                name: document.getElementById("name").value,
+                price: parseFloat(document.getElementById("price").value)
+            }
+
+            if (newItem.name !== "" && !isNaN(newItem.price)) {
+                shoppingCart.push(newItem);
+                displayCart();
+                calculateTotal();
+            }
+        }
+
+
+        function displayCart() {
+            const cartList =
+                document.getElementById('list');
+            cartList.innerHTML = '';
+
+            shoppingCart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - Rs.${item.price.toFixed(2)}`;
+                cartList.appendChild(listItem);
+            });
+        }
+
+
+
+        function calculateTotal() {
+            const totalPriceElement =
+                document.getElementById('totalPrice');
+            const total = shoppingCart.reduce((sum, item) =>
+                sum + item.price, 0);
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

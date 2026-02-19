@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geometric Creations</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    canvas {
+        border: 1px solid #000;
+        margin-top: 20px;
+    }
+
+    select, button {
+        padding: 8px 12px;
+        margin-left: 10px;
+    }
+
+    button {
+        background-color: rgb(247, 220, 111);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<h1 style="color: purple;">Geometric Creations</h1>
+
+<div>
+    <label style="color: olivedrab; font-weight: bold; font-size:20px;">
+        Select Shape:
+    </label>
+
+    <select id="shapeType">
+        <option value="circle">Circle</option>
+        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+    </select>
+
+    <button id="drawBtn">Draw Shape</button>
+</div>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+
+    // ========================
+    // Base Class
+    // ========================
+    class Shape {
+        constructor(color = "black") {
+            this.color = color;
+        }
+
+        draw() {
+            console.log(`Drawing a generic shape with color ${this.color}`);
+        }
+    }
+
+    // ========================
+    // Circle Class
+    // ========================
+    class Circle extends Shape {
+        constructor(radius, color) {
+            super(color);
+            this.radius = radius;
+        }
+
+        draw() {
+            console.log(`Drawing a ${this.color} circle with radius ${this.radius}`);
+        }
+
+        render(ctx, canvas) {
+            ctx.beginPath();
+            ctx.arc(
+                canvas.width / 2,
+                canvas.height / 2,
+                this.radius,
+                0,
+                2 * Math.PI
+            );
+            ctx.fill();
+        }
+    }
+
+    // ========================
+    // Square Class
+    // ========================
+    class Square extends Shape {
+        constructor(sideLength, color) {
+            super(color);
+            this.sideLength = sideLength;
+        }
+
+        draw() {
+            console.log(`Drawing a ${this.color} square with side length ${this.sideLength}`);
+        }
+
+        render(ctx, canvas) {
+            ctx.fillRect(
+                canvas.width / 2 - this.sideLength / 2,
+                canvas.height / 2 - this.sideLength / 2,
+                this.sideLength,
+                this.sideLength
+            );
+        }
+    }
+
+    // ========================
+    // Triangle Class
+    // ========================
+    class Triangle extends Shape {
+        constructor(x1, y1, x2, y2, x3, y3, color) {
+            super(color);
+            this.x1 = x1; this.y1 = y1;
+            this.x2 = x2; this.y2 = y2;
+            this.x3 = x3; this.y3 = y3;
+        }
+
+        draw() {
+            console.log(
+                `Drawing a ${this.color} triangle with points 
+                (${this.x1},${this.y1}), 
+                (${this.x2},${this.y2}), 
+                (${this.x3},${this.y3})`
+            );
+        }
+
+        render(ctx) {
+            ctx.beginPath();
+            ctx.moveTo(this.x1, this.y1);
+            ctx.lineTo(this.x2, this.y2);
+            ctx.lineTo(this.x3, this.y3);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+    }
+
+    // ========================
+    // Draw Handler
+    // ========================
+    function drawShape() {
+
+        const selectedShape =
+            document.getElementById("shapeType").value;
+
+        let shape;
+
+        switch (selectedShape) {
+            case "circle":
+                shape = new Circle(100, "blue");
+                break;
+            case "square":
+                shape = new Square(200, "red");
+                break;
+            case "triangle":
+                shape = new Triangle(
+                    50, 350,
+                    350, 350,
+                    200, 100,
+                    "green"
+                );
+                break;
+            default:
+                return;
+        }
+
+        shape.draw(); // Polymorphism
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = shape.color;
+
+        // True polymorphic rendering
+        if (typeof shape.render === "function") {
+            shape.render(ctx, canvas);
+        }
+    }
+
+    document
+        .getElementById("drawBtn")
+        .addEventListener("click", drawShape);
+
+</script>
+
+</body>
+</html>

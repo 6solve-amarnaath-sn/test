@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Master</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./taskMaster.css">
+
+</head>
+<body>
+
+<div class="app">
+
+    <h1 class="title">Task Master</h1>
+    <p class="subtitle">Create your own to do list..</p>
+
+    <button id="toggleList" class="hide-btn">Hide list</button>
+
+    <div class="list-container" id="list">
+
+        <h3>My To Do List:</h3>
+
+        <div class="description-area">
+            <input type="text" id="descriptionInput">
+            <button id="descriptionButton">Change list description</button>
+        </div>
+
+        <p id="description">Things to do today</p>
+
+        <ul>
+            <li>Clean Car</li>
+            <li>Buy Groceries</li>
+            <li>Visit Grandma</li>
+        </ul>
+
+        <div class="add-item-area">
+            <input type="text" id="addItemInput">
+            <button id="addItemButton">Add item</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="./taskMaster.js"></script>
+</body>
+</html>

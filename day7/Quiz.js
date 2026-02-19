@@ -84,4 +84,4 @@ function showResult() {
     scoreEl.textContent = `You scored ${score} out of ${questions.length}`;
 }
 
-startQuiz();
+startQuiz();  */Amarnath/*
